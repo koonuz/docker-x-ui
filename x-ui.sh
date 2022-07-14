@@ -6,15 +6,15 @@ yellow='\033[0;33m'
 plain='\033[0m'
 
 confirm() {
-    if [ $# > 1 ]; then
+    if [[ $# > 1 ]]; then
         echo && read -p "$1 [默认$2]: " temp
-        if [ x"${temp}" == x"" ]; then
+        if [[ x"${temp}" == x"" ]]; then
             temp=$2
         fi
     else
         read -p "$1 [y/n]: " temp
     fi
-    if [ x"${temp}" == x"y" || x"${temp}" == x"Y" ]; then
+    if [[ x"${temp}" == x"y" || x"${temp}" == x"Y" ]]; then
         return 0
     else
         return 1
@@ -37,8 +37,8 @@ before_show_menu() {
 
 reset_user() {
     confirm "确定要将用户名和密码重置为 admin 吗" "n"
-    if [ $? != 0 ]; then
-        if [ $# == 0 ]; then
+    if [[ $? != 0 ]]; then
+        if [[ $# == 0 ]]; then
             show_menu
         fi
         return 0
@@ -50,8 +50,8 @@ reset_user() {
 
 reset_config() {
     confirm "确定要重置所有面板设置吗，账号数据不会丢失，用户名和密码不会改变" "n"
-    if [ $? != 0 ]; then
-        if [ $# == 0 ]; then
+    if [[ $? != 0 ]]; then
+        if [[ $# == 0 ]]; then
             show_menu
         fi
         return 0
@@ -63,7 +63,7 @@ reset_config() {
 
 set_port() {
     echo && echo -n -e "输入端口号[1-65535]: " && read port
-    if [ -z "${port}" ]; then
+    if [[ -z "${port}" ]]; then
         echo -e "${yellow}已取消${plain}"
         before_show_menu
     else
