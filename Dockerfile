@@ -1,4 +1,4 @@
-FROM debian:11-slim
+FROM debian:11
 WORKDIR /usr/local/
 COPY x-ui.sh /usr/local/x-ui.sh
 RUN apt-get update && \
