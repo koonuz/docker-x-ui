@@ -1,6 +1,5 @@
 FROM debian:11-slim
 WORKDIR /usr/local/
-COPY x-ui.sh /usr/local/x-ui.sh
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates wget tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
@@ -12,6 +11,4 @@ RUN apt-get update && \
     chmod +x x-ui bin/xray-linux-amd64 x-ui.sh && \
     cp -f x-ui.sh /usr/bin/x-ui.sh
 
-COPY runit /etc/service
-WORKDIR /usr/local/x-ui
 CMD [ "sh", "-c", "/usr/local/x-ui/x-ui"]
