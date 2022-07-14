@@ -22,7 +22,7 @@ confirm() {
 }
 
 confirm_restart() {
-    confirm "是否重启面板，重启面板也会重启 xray" "y"
+    confirm "是否重启面板，重启面板也会重启 x2ray" "y"
     if [[ $? == 0 ]]; then
         restart
     else
@@ -61,19 +61,10 @@ reset_config() {
     confirm_restart
 }
 
-check_config() {
-    info=$(/usr/local/x-ui/x-ui setting -show true)
-    if [[ $? != 0 ]]; then
-        LOGE "get current settings error,please check logs"
-        show_menu
-    fi
-    LOGI "${info}"
-}
-
 set_port() {
     echo && echo -n -e "输入端口号[1-65535]: " && read port
     if [[ -z "${port}" ]]; then
-        LOGD "已取消"
+        echo -e "${yellow}已取消${plain}"
         before_show_menu
     else
         /usr/local/x-ui/x-ui setting -port ${port}
