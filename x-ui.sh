@@ -5,6 +5,18 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
+function LOGD() {
+    echo -e "${yellow}[DEG] $* ${plain}"
+}
+
+function LOGE() {
+    echo -e "${red}[ERR] $* ${plain}"
+}
+
+function LOGI() {
+    echo -e "${green}[INF] $* ${plain}"
+}
+
 confirm() {
     if [[ $# > 1 ]]; then
         echo && read -p "$1 [默认$2]: " temp
