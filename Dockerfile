@@ -1,4 +1,5 @@
 FROM debian:11-slim
+COPY x-ui.sh /usr/local/x-ui.sh
 WORKDIR /usr/local/
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates wget tzdata && \
