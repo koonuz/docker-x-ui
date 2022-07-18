@@ -8,8 +8,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends ca-certifica
     tar -zxvf x-ui-linux-amd64.tar.gz && \
     rm x-ui-linux-amd64.tar.gz && \
     mv x-ui.sh x-ui/x-ui.sh && \
-    cd x-ui && \
-    chmod +x x-ui bin/xray-linux-amd64 x-ui.sh && \
+    chmod +x x-ui/x-ui x-ui/bin/xray-linux-amd64 x-ui/x-ui.sh && \
     cp -f x-ui.sh /usr/bin/x-ui.sh && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
