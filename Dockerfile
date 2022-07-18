@@ -14,6 +14,6 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends ca-certifica
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY runit /etc/service
-RUN cd /etc/service/x-ui && chmod +x run
+RUN chmod +x /etc/service/x-ui/run
 WORKDIR /usr/local/x-ui
 CMD [ "runsvdir", "-P", "/etc/service"]
