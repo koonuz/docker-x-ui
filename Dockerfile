@@ -10,6 +10,7 @@ RUN apt-get -y update && \
     rm x-ui-linux-amd64.tar.gz && \
     mv x-ui.sh x-ui/x-ui.sh && \
     chmod +x x-ui/x-ui x-ui/bin/xray-linux-amd64 x-ui/x-ui.sh && \
+    cp -f /usr/local/x-ui/x-ui.sh /usr/bin/x-ui.sh && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY runit /etc/service
