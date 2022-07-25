@@ -61,6 +61,15 @@ reset_config() {
     confirm_restart
 }
 
+check_config() {
+    info=$(/usr/local/x-ui/x-ui setting -show true)
+    if [[ $? != 0 ]]; then
+        echo -e "get current settings error,please check logs"
+        show_menu
+    fi
+    echo -e "${info}"
+}
+
 set_port() {
     echo && echo -n -e "输入端口号[1-65535]: " && read port
     if [[ -z "${port}" ]]; then
@@ -88,11 +97,12 @@ show_menu() {
 --- https://blog.sprov.xyz/x-ui ---
   ${green}0.${plain} 退出脚本
 ————————————————
-  ${green}1.${plain} 重置用户名密码
-  ${green}2.${plain} 重置面板设置
-  ${green}3.${plain} 设置面板端口
-  ${green}4.${plain} 迁移 v2-ui 账号数据至 x-ui"
-    echo && read -p "请输入选择 [0-4]: " num
+  ${green}1.${plain} 重置用户名和密码
+  ${green}2.${plain} 重置面板所有设置
+  ${green}3.${plain} 查看当前面板设置
+  ${green}4.${plain} 设置面板端口
+  ${green}5.${plain} 迁移 v2-ui 账号数据至 x-ui"
+    echo && read -p "请输入选择 [0-5]: " num
 
     case "${num}" in
         0) exit 0
@@ -101,9 +111,11 @@ show_menu() {
         ;;
         2) reset_config
         ;;
-        3) set_port
+        3) check_config
         ;;
-        4) migrate_v2_ui
+        4) set_port
+        ;;
+        5) migrate_v2_ui
         ;;
         *) echo -e "${red}请输入正确的数字 [0-4]${plain}"
         ;;
