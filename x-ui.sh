@@ -117,7 +117,7 @@ show_menu() {
         ;;
         5) migrate_v2_ui
         ;;
-        *) echo -e "${red}请输入正确的数字 [0-4]${plain}"
+        *) echo -e "${red}请输入正确的数字 [0-5]${plain}"
         ;;
     esac
 }
