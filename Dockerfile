@@ -1,6 +1,6 @@
 FROM debian:11-slim
 COPY x-ui.sh /usr/local/x-ui.sh
-ENV GET_VERSION 0.3.3.15-0724
+ENV GET_VERSION 0.3.3.15-0728
 RUN apt-get -y update && \
     apt-get install -y --no-install-recommends ca-certificates wget runit && \
     apt-get clean && \
