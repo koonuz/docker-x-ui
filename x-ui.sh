@@ -64,7 +64,7 @@ reset_config() {
 check_config() {
     info=$(/usr/local/x-ui/x-ui setting -show true)
     if [[ $? != 0 ]]; then
-        echo -e "get current settings error,please check logs"
+        echo -n "get current settings error,please check logs"
         show_menu
     fi
     echo -e "${info}"
