@@ -2,7 +2,7 @@ FROM debian:11-slim
 COPY x-ui.sh /usr/local/x-ui.sh
 ENV GET_VERSION 0.3.3.15-0728
 RUN apt-get -y update && \
-    apt-get install -y --no-install-recommends ca-certificates wget runit curl socat && \
+    apt-get install -y --no-install-recommends ca-certificates wget runit curl socat crontab && \
     apt-get clean && \
     cd /usr/local && \
     wget -q https://github.com/FranzKafkaYu/x-ui/releases/download/${GET_VERSION}/x-ui-linux-amd64.tar.gz && \
