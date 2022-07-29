@@ -87,11 +87,11 @@ ssl_cert_issue() {
     echo -e ""
     echo -e "${yellow}******使用说明******${plain}"
     echo -e "${green}该脚本提供两种方式实现证书签发,证书安装路径均为/root/cert${plain}"
-    echo -e "${green}方式1:acme standalone mode,需要保持端口开放${plain}"
-    echo -e "${green}方式2:acme DNS API mode,需要提供Cloudflare Global API Key${plain}"
+    echo -e "${green}方式1:acme standalone mode${plain},需要保持端口开放"
+    echo -e "${green}方式2:acme DNS API mode${plain},需要提供Cloudflare Global API Key"
     echo -e "如域名属于${green}免费域名${plain},则推荐使用${green}方式1${plain}进行申请"
-    echo -e "如域名属于${green}非免费域名${plain}且使用Cloudflare进行域名解析的,则推荐使用${green}方式2${plain}进行申请"
-    read -p "请选择你想使用的方式": method
+    echo -e "如域名属于${green}非免费域名${plain}且${green}使用Cloudflare进行域名解析${plain}的,则推荐使用${green}方式2${plain}进行申请"
+    read -p "请选择你想使用的方式【1或2】": method
     echo -e "你所使用的方式为${green}${method}${plain}"
 
     if [ "${method}" == "1" ]; then
