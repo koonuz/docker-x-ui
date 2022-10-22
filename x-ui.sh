@@ -161,6 +161,7 @@ ssl_cert_issue_standalone() {
     ~/.acme.sh/acme.sh --issue -d ${domain} --standalone --httpport ${WebPort}
     if [ $? -ne 0 ]; then
         echo -e "${red}证书申请失败,原因请详见报错信息${plain}"
+        rm -rf ~/.acme.sh/${domain}
         exit 1
     else
         echo -e "${green}证书申请成功,开始安装证书...${plain}"
@@ -172,6 +173,7 @@ ssl_cert_issue_standalone() {
 
     if [ $? -ne 0 ]; then
         echo -e "${red}证书安装失败,脚本退出${plain}"
+        rm -rf ~/.acme.sh/${domain}
         exit 1
     else
         echo -e "${green}证书安装成功,开启自动更新...${plain}"
@@ -245,6 +247,7 @@ ssl_cert_issue_by_cloudflare() {
         ~/.acme.sh/acme.sh --issue --dns dns_cf -d ${CF_Domain} -d *.${CF_Domain} --log
         if [ $? -ne 0 ]; then
             echo -e "${red}证书签发失败,脚本退出${plain}"
+            rm -rf ~/.acme.sh/${CF_Domain}
             exit 1
         else
             echo -e "${green}证书签发成功,安装中...${plain}"
@@ -254,6 +257,7 @@ ssl_cert_issue_by_cloudflare() {
             --fullchain-file /root/cert/fullchain.cer
         if [ $? -ne 0 ]; then
             echo -e "${red}证书安装失败,脚本退出${plain}"
+            rm -rf ~/.acme.sh/${CF_Domain}
             exit 1
         else
             echo -e "${green}证书安装成功,开启自动更新...${plain}"
