@@ -1,2 +1,2 @@
-# docker-xui
-x-ui in docker
+# Docker版 x-ui
+Coming soon...
