@@ -190,7 +190,6 @@ ssl_cert_issue_standalone() {
         ls -lah cert
         chmod 755 $certPath
     fi
-
 }
 
 #method for DNS API mode
@@ -279,10 +278,21 @@ ssl_cert_issue_by_cloudflare() {
     fi
 }
 
+start() {
+    sv start x-ui
+    before_show_menu
+}
+
+stop() {
+    sv stop x-ui
+    before_show_menu
+}
+
 restart() {
     sv restart x-ui
     before_show_menu
 }
+
 migrate_v2_ui() {
     /usr/local/x-ui/x-ui v2-ui
     before_show_menu
@@ -291,17 +301,22 @@ migrate_v2_ui() {
 show_menu() {
     echo -e "
   ${green}x-ui 面板管理脚本${plain}
---- 该版本为 FranzKafkaYu增强版 ---  
---- 原版 https://blog.sprov.xyz/x-ui ---
+--- 该版本为 FranzKafkaYu 增强版 ---  
+--- 增强版 https://https://github.com/FranzKafkaYu/x-ui ---
   ${green}0.${plain} 退出脚本
 ————————————————
-  ${green}1.${plain} 重置用户名和密码
-  ${green}2.${plain} 重置面板所有设置
-  ${green}3.${plain} 查看当前面板设置
-  ${green}4.${plain} 设置面板端口
-  ${green}5.${plain} 一键申请SSL证书(acme申请)
-  ${green}6.${plain} 迁移 v2-ui 账号数据至 x-ui"
-    echo && read -p "请输入选择 [0-6]: " num
+  ${green}1.${plain} 重置 x-ui 面板用户名和密码
+  ${green}2.${plain} 重置 x-ui 面板设置
+  ${green}3.${plain} 设置 x-ui 面板端口
+  ${green}4.${plain} 查看当前 x-ui 面板设置
+————————————————
+  ${green}5.${plain} 启动 x-ui 面板
+  ${green}6.${plain} 停止 x-ui 面板
+  ${green}7.${plain} 重启 x-ui 面板
+————————————————
+  ${green}8.${plain} 一键申请SSL证书(acme申请)
+  ${green}9.${plain} 迁移 v2-ui 账号数据至 x-ui"
+    echo && read -p "请输入选择 [0-9]: " num
 
     case "${num}" in
         0) exit 0
@@ -310,15 +325,21 @@ show_menu() {
         ;;
         2) reset_config
         ;;
-        3) check_config
+        3) set_port
         ;;
-        4) set_port
+        4) check_config
         ;;
-        5) ssl_cert_issue
+        5) start
         ;;
-        6) migrate_v2_ui
+        6) stop
         ;;
-        *) echo -e "${red}请输入正确的数字 [0-6]${plain}"
+        7) restart
+        ;;
+        8) ssl_cert_issue
+        ;;
+        9) migrate_v2_ui
+        ;;
+        *) echo -e "${red}请输入正确的数字 [0-9]${plain}"
         ;;
     esac
 }
