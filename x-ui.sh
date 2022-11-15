@@ -303,7 +303,7 @@ show_menu() {
     echo -e "
   ${green}x-ui 面板管理脚本${plain}
 --- 该版本为 FranzKafkaYu 增强版 ---  
---- 增强版 https://https://github.com/FranzKafkaYu/x-ui ---
+--- https://github.com/FranzKafkaYu/x-ui ---
   ${green}0.${plain} 退出脚本
 ————————————————
   ${green}1.${plain} 重置 x-ui 面板用户名和密码
