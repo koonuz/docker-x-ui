@@ -123,7 +123,7 @@ ssl_cert_issue_standalone() {
     if ! command -v ~/.acme.sh/acme.sh &>/dev/null; then
         install_acme
         if [ $? -ne 0 ]; then
-            LOGE "安装 acme 失败，请检查日志"
+            echo -e "${red}无法安装acme,请检查错误日志${plain}"
             exit 1
     fi
     #creat a directory for install cert
