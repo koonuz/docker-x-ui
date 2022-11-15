@@ -125,6 +125,7 @@ ssl_cert_issue_standalone() {
         if [ $? -ne 0 ]; then
             echo -e "${red}无法安装acme,请检查错误日志${plain}"
             exit 1
+        fi
     fi
     #creat a directory for install cert
     certPath=/root/cert
