@@ -2,6 +2,9 @@ FROM alpine:latest
 COPY runit /etc/service
 COPY x-ui.sh /usr/bin/x-ui
 ENV GET_VERSION 0.3.4.2
+FROM debian:11-slim
+COPY x-ui.sh /usr/local/x-ui.sh
+ENV GET_VERSION 0.3.4.0
 ENV GET_ARCH amd64
 RUN apk update && \
     apk add --no-cache ca-certificates tzdata runit curl bash && \
