@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 env:
-  DOCKER_IMAGE_NAME: x-ui
+  APP_NAME: x-ui
 
 jobs:
   build:
@@ -25,4 +25,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ DOCKER_IMAGE_NAME }}:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ APP_NAME }}:latest
