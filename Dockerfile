@@ -4,7 +4,7 @@ COPY x-ui.sh /usr/bin/x-ui
 ENV GET_VERSION 0.3.4.3
 ENV GET_ARCH amd64
 RUN apk update && \
-    apk add --no-cache ca-certificates tzdata runit curl bash && \
+    apk add --no-cache ca-certificates tzdata runit curl bash iptables && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
     mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 && \
