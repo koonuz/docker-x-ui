@@ -1,7 +1,7 @@
 FROM alpine:latest
 COPY runit /etc/service
 COPY x-ui.sh /usr/bin/x-ui
-ENV GET_VERSION 0.3.4.3
+ENV GET_VERSION 0.3.4.4
 ENV GET_ARCH amd64
 RUN apk update && \
     apk add --no-cache ca-certificates tzdata runit curl bash iptables && \
